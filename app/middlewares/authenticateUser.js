@@ -6,7 +6,7 @@ const authenticateUser = (req, res, next) => {
     res.status(400).json({ error: "token is required" });
   }
   try {
-    const tokendata = jwt.verify(token, process.env.secret);
+    const tokendata = jwt.verify(token, process.env.SECRET);
     // console.log(tokendata)
     req.user = {
       id: tokendata.userId
