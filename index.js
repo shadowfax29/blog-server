@@ -21,14 +21,8 @@ const commentValidationSchema = require("./app/validation/comment-validation");
 require("dotenv").config();
 app.use(express.json());
 app.use(helmet())
-const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your actual client URL
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // if you need to include cookies
-  optionsSuccessStatus: 204
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(compression());
 
@@ -50,7 +44,7 @@ const db=async () => {
         await mongoose.connect(process.env.database);
         console.log("connected to db");
     } catch (err) {
-        console.log("connection error");
+        console.log("db error");
     }
 }
 db()
