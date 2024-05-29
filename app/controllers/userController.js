@@ -52,7 +52,7 @@ userController.login = async (req, res) => {
                     userId: user._id
                 };
                
-                const token = jwt.sign(tokenData, process.env.SECRET, { expiresIn: "7d" });
+                const token = jwt.sign(tokenData, process.env.SECRET, { expiresIn: "1d" });
               return  res.json({ token: token });
             } else {
                 return res.status(400).json({ error: "Invalid email/password" });
